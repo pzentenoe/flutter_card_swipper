@@ -4,21 +4,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Pagination', (WidgetTester tester) async {
-    SwiperController controller = new SwiperController();
+    SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = new SwiperPluginConfig(
+    SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
         scrollDirection: Axis.horizontal);
 
-    Key key = new UniqueKey();
-    await tester.pumpWidget(new MaterialApp(
-      home: new Scaffold(body: new Builder(builder: (BuildContext context) {
-        return new DotSwiperPaginationBuilder(
+    Key key = UniqueKey();
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: Builder(builder: (BuildContext context) {
+        return DotSwiperPaginationBuilder(
                 key: key,
-                activeColor: new Color(0xff000000),
-                color: new Color(0xffffffff),
+                activeColor: Color(0xff000000),
+                color: Color(0xffffffff),
                 space: 10.0,
                 size: 10.0,
                 activeSize: 20.0)
@@ -40,21 +40,21 @@ void main() {
   });
 
   testWidgets('Pagination vertical', (WidgetTester tester) async {
-    SwiperController controller = new SwiperController();
+    SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = new SwiperPluginConfig(
+    SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
         scrollDirection: Axis.vertical);
 
-    Key key = new UniqueKey();
-    await tester.pumpWidget(new MaterialApp(
-      home: new Scaffold(body: new Builder(builder: (BuildContext context) {
-        return new DotSwiperPaginationBuilder(
+    Key key = UniqueKey();
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: Builder(builder: (BuildContext context) {
+        return DotSwiperPaginationBuilder(
                 key: key,
-                activeColor: new Color(0xff000000),
-                color: new Color(0xffffffff),
+                activeColor: Color(0xff000000),
+                color: Color(0xffffffff),
                 space: 10.0,
                 size: 10.0,
                 activeSize: 20.0)
@@ -76,53 +76,53 @@ void main() {
   });
 
   testWidgets('Pagination fraction', (WidgetTester tester) async {
-    SwiperController controller = new SwiperController();
+    SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = new SwiperPluginConfig(
+    SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
         scrollDirection: Axis.horizontal);
 
-    Key key = new UniqueKey();
-    await tester.pumpWidget(new MaterialApp(
-      home: new Scaffold(body: new Builder(builder: (BuildContext context) {
-        return new FractionPaginationBuilder(
+    Key key = UniqueKey();
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: Builder(builder: (BuildContext context) {
+        return FractionPaginationBuilder(
           key: key,
-          activeColor: new Color(0xff000000),
-          color: new Color(0xffffffff),
+          activeColor: Color(0xff000000),
+          color: Color(0xffffffff),
         ).build(context, config);
       })),
     ));
 
-    expect(find.text("1"), findsOneWidget);
-    expect(find.text(" / 10"), findsOneWidget);
+    expect(find.text('1 '), findsOneWidget);
+    expect(find.text(' / 10 '), findsOneWidget);
 
     expect(find.byKey(key), findsOneWidget);
   });
 
   testWidgets('Pagination fraction vertical', (WidgetTester tester) async {
-    SwiperController controller = new SwiperController();
+    SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = new SwiperPluginConfig(
+    SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
         scrollDirection: Axis.vertical);
 
-    Key key = new UniqueKey();
-    await tester.pumpWidget(new MaterialApp(
-      home: new Scaffold(body: new Builder(builder: (BuildContext context) {
-        return new FractionPaginationBuilder(
+    Key key = UniqueKey();
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: Builder(builder: (BuildContext context) {
+        return FractionPaginationBuilder(
           key: key,
-          activeColor: new Color(0xff000000),
-          color: new Color(0xffffffff),
+          activeColor: Color(0xff000000),
+          color: Color(0xffffffff),
         ).build(context, config);
       })),
     ));
 
-    expect(find.text("1"), findsOneWidget);
-    expect(find.text("10"), findsOneWidget);
+    expect(find.text('1 '), findsOneWidget);
+    expect(find.text('10 '), findsOneWidget);
 
     expect(find.byKey(key), findsOneWidget);
   });

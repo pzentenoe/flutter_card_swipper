@@ -6,14 +6,15 @@ void main() {
   testWidgets('STACK', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+            index: 0,
             layout: SwiperLayout.STACK,
             itemWidth: 300.0,
             itemHeight: 200.0,
             itemBuilder: (context, index) {
-              return new Container(
+              return Container(
                 color: Colors.grey,
-                child: new Center(
-                  child: new Text("$index"),
+                child: Center(
+                  child: Text('$index '),
                 ),
               );
             },
@@ -23,14 +24,15 @@ void main() {
   testWidgets('TINDER', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+            index: 0,
             layout: SwiperLayout.TINDER,
             itemWidth: 300.0,
             itemHeight: 200.0,
             itemBuilder: (context, index) {
-              return new Container(
+              return Container(
                 color: Colors.grey,
-                child: new Center(
-                  child: new Text("$index"),
+                child: Center(
+                  child: Text('$index '),
                 ),
               );
             },
@@ -40,14 +42,15 @@ void main() {
   testWidgets('DEFAULT', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+            index: 0,
             layout: SwiperLayout.DEFAULT,
             viewportFraction: 0.8,
             scale: 0.9,
             itemBuilder: (context, index) {
-              return new Container(
+              return Container(
                 color: Colors.grey,
-                child: new Center(
-                  child: new Text("$index"),
+                child: Center(
+                  child: Text('$index '),
                 ),
               );
             },
@@ -56,23 +59,21 @@ void main() {
 
   testWidgets('CUSTOM', (WidgetTester tester) async {
     CustomLayoutOption customLayoutOption;
-    customLayoutOption = new CustomLayoutOption(startIndex: -1, stateCount: 3)
-        .addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
-      new Offset(-370.0, -40.0),
-      new Offset(0.0, 0.0),
-      new Offset(370.0, -40.0)
-    ]);
+    customLayoutOption = CustomLayoutOption(startIndex: -1, stateCount: 3)
+        .addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate(
+            [Offset(-370.0, -40.0), Offset(0.0, 0.0), Offset(370.0, -40.0)]);
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+            index: 0,
             layout: SwiperLayout.CUSTOM,
             itemWidth: 300.0,
             itemHeight: 200.0,
             customLayoutOption: customLayoutOption,
             itemBuilder: (context, index) {
-              return new Container(
+              return Container(
                 color: Colors.grey,
-                child: new Center(
-                  child: new Text("$index"),
+                child: Center(
+                  child: Text('$index '),
                 ),
               );
             },

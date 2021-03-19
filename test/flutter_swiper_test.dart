@@ -7,50 +7,54 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+            index: 0,
             itemBuilder: (context, index) {
-              return Text("0");
+              return Text('0 ');
             },
             itemCount: 10)));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('Default Swiper loop:false', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+      index: 0,
       onTap: (int inde) {},
       itemBuilder: (context, index) {
-        return Text("0");
+        return Text('0 ');
       },
       itemCount: 10,
       loop: false,
     )));
 
-    expect(find.text("0", skipOffstage: true), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: true), findsOneWidget);
   });
 
   testWidgets('Create Swiper with children', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
         home: Swiper.children(
-      children: <Widget>[Text("0"), Text("1")],
+      index: 0,
+      children: <Widget>[Text('0 '), Text('1 ')],
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('Create Swiper with list', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
         home: Swiper.list(
-      list: ["0", "1"],
+      index: 0,
+      list: ['0 ', '1 '],
       builder: (BuildContext context, dynamic data, int index) {
         return Text(data);
       },
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('Swiper with default plugins', (WidgetTester tester) async {
@@ -58,22 +62,23 @@ void main() {
     SwiperController controller = SwiperController();
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+      index: 0,
       controller: controller,
       itemBuilder: (context, index) {
-        return Text("0");
+        return Text('0 ');
       },
       itemCount: 10,
       pagination: SwiperPagination(),
       control: SwiperControl(),
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   const List<String> titles = [
-    "Flutter Swiper is awosome",
-    "Really nice",
-    "Yeap"
+    'Flutter Swiper is awosome ',
+    'Really nice ',
+    'Yeap '
   ];
 
   testWidgets('Customize pagination', (WidgetTester tester) async {
@@ -81,18 +86,19 @@ void main() {
     SwiperController controller = SwiperController();
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+      index: 0,
       controller: controller,
       itemBuilder: (context, index) {
-        return Text("0");
+        return Text('0 ');
       },
       itemCount: 10,
       pagination: SwiperCustomPagination(
-          builder: (BuildContext context, SwiperPluginConfig config) {
+          builder: (BuildContext context, SwiperPluginConfig? config) {
         return ConstrainedBox(
           child: Row(
             children: <Widget>[
               Text(
-                "${titles[config.activeIndex]} ${config.activeIndex + 1}/${config.itemCount}",
+                '${titles[config!.activeIndex!]} ${config.activeIndex! + 1}/${config.itemCount} ',
                 style: TextStyle(fontSize: 20.0),
               ),
               Expanded(
@@ -124,7 +130,7 @@ void main() {
     await controller.next(animation: false);
     await controller.previous(animation: false);
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('Swiper fraction', (WidgetTester tester) async {
@@ -132,16 +138,17 @@ void main() {
     SwiperController controller = SwiperController();
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+      index: 0,
       controller: controller,
       itemBuilder: (context, index) {
-        return Text("0");
+        return Text('0 ');
       },
       itemCount: 10,
       pagination: SwiperPagination(builder: SwiperPagination.fraction),
       control: SwiperControl(),
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text('0 ', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('Zero itemCount', (WidgetTester tester) async {
@@ -149,15 +156,16 @@ void main() {
     SwiperController controller = SwiperController();
     await tester.pumpWidget(MaterialApp(
         home: Swiper(
+      index: 0,
       controller: controller,
       itemBuilder: (context, index) {
-        return Text("0");
+        return Text('0 ');
       },
       itemCount: 0,
       pagination: SwiperPagination(builder: SwiperPagination.fraction),
       control: SwiperControl(),
     )));
 
-    expect(find.text("0", skipOffstage: false), findsNothing);
+    expect(find.text('0 ', skipOffstage: false), findsNothing);
   });
 }

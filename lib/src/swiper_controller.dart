@@ -1,7 +1,6 @@
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:flutter_card_swipper/widgets/transformer_page_view/index_controller.dart';
 
-
 class SwiperController extends IndexController {
   // Autoplay is started
   static const int START_AUTOPLAY = 2;
@@ -17,15 +16,15 @@ class SwiperController extends IndexController {
   static const int BUILD = 5;
 
   // available when `event` == SwiperController.BUILD
-  SwiperPluginConfig config;
+  SwiperPluginConfig? config;
 
   // available when `event` == SwiperController.SWIPE
   // this value is PageViewController.pos
-  double pos;
+  double? pos;
 
-  int index;
-  bool animation;
-  bool autoplay;
+  int? index;
+  bool? animation;
+  bool? autoplay;
 
   SwiperController();
 

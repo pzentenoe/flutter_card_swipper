@@ -8,28 +8,28 @@ import 'package:flutter_card_swipper/widgets/flutter_page_indicator/flutter_page
 abstract class SwiperPlugin {
   const SwiperPlugin();
 
-  Widget build(BuildContext context, SwiperPluginConfig config);
+  Widget build(BuildContext context, SwiperPluginConfig? config);
 }
 
 class SwiperPluginConfig {
-  final int activeIndex;
-  final int itemCount;
-  final PageIndicatorLayout indicatorLayout;
+  final int? activeIndex;
+  final int? itemCount;
+  final PageIndicatorLayout? indicatorLayout;
   final Axis scrollDirection;
-  final bool loop;
-  final bool outer;
-  final PageController pageController;
-  final SwiperController controller;
-  final SwiperLayout layout;
+  final bool? loop;
+  final bool? outer;
+  final PageController? pageController;
+  final SwiperController? controller;
+  final SwiperLayout? layout;
 
   const SwiperPluginConfig({
     this.activeIndex,
     this.itemCount,
     this.indicatorLayout,
     this.outer,
-    @required this.scrollDirection,
+    required this.scrollDirection,
     this.controller,
-    @required this.pageController,
+    this.pageController,
     this.layout,
     this.loop,
   });

@@ -1,8 +1,3 @@
-![Logo](banner.jpg)
-
-
-
-
 # flutter_card_swiper
 
 The best swiper for flutter , with multiple layouts, infinite loop. Compatible with Android & iOS.

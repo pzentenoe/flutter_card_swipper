@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - first version with flutter_card_swipper.
 
-* TODO: Describe initial release.
+* first release.
+* null-safety version

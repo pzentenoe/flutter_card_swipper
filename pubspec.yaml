@@ -1,0 +1,19 @@
+name: flutter_card_swipper
+description: A new Flutter package project.
+version: 0.1.0
+homepage: https://github.com/pzentenoe/flutter_card_swipper
+
+environment:
+  sdk: '>=2.11.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+

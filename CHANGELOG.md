@@ -1,3 +1,6 @@
+## [0.4.0] - improvement analyzer.
+* improvements analyzer.
+
 ## [0.3.0] - improvement description.
 * improvements score.
 

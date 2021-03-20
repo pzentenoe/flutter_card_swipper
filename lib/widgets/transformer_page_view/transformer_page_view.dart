@@ -140,6 +140,7 @@ class TransformerPageController extends PageController {
 
   double? get realPage {
     double? page;
+    // ignore: unnecessary_null_comparison
     if (position.maxScrollExtent == null || position.minScrollExtent == null) {
       page = 0.0;
     } else {
@@ -149,7 +150,7 @@ class TransformerPageController extends PageController {
     return page;
   }
 
-  static _getRenderPageFromRealPage(
+  static double? _getRenderPageFromRealPage(
       double? page, bool loop, int? itemCount, bool reverse) {
     double? renderPage;
     if (loop) {
@@ -274,7 +275,6 @@ class TransformerPageView extends StatefulWidget {
       Duration? duration,
       Curve curve: Curves.ease,
       double viewportFraction: 1.0,
-      bool loop: false,
       Axis scrollDirection = Axis.horizontal,
       ScrollPhysics? physics,
       bool pageSnapping = true,
@@ -356,11 +356,11 @@ class _TransformerPageViewState extends State<TransformerPageView> {
     return AnimatedBuilder(
         animation: _pageController!,
         builder: (BuildContext c, Widget? w) {
-          int? renderIndex =
+          final int? renderIndex =
               _pageController!.getRenderIndexFromRealIndex(index);
           Widget? child;
           if (widget.itemBuilder != null) {
-            child = widget.itemBuilder!(context, renderIndex);
+            child = widget.itemBuilder!(context, renderIndex!);
           }
           if (child == null) {
             child = Container();
@@ -371,7 +371,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
 
           double position;
 
-          double? page = _pageController!.realPage;
+          final double? page = _pageController!.realPage;
 
           if (_transformer!.reverse) {
             position = page! - index;
@@ -455,6 +455,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
     RenderObject? renderObject = context.findRenderObject();
     if (renderObject != null) {
       Rect bounds = renderObject.paintBounds;
+      // ignore: unnecessary_null_comparison
       if (bounds != null) {
         size = bounds.size;
       }

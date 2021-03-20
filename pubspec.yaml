@@ -1,6 +1,6 @@
 name: flutter_card_swipper
 description: The best swiper(carousel) for flutter, with multiple layouts, infinite loop. Compatible with Android & iOS.
-version: 0.3.0
+version: 0.4.0
 homepage: https://github.com/pzentenoe/flutter_card_swipper
 
 environment:

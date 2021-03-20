@@ -83,8 +83,7 @@ class PageTransformerBuilder extends PageTransformer {
   final PageTransformerBuilderCallback builder;
 
   PageTransformerBuilder({bool reverse: false, required this.builder})
-      : assert(builder != null),
-        super(reverse: reverse);
+      : super(reverse: reverse);
 
   @override
   Widget transform(Widget child, TransformInfo info) {
@@ -111,7 +110,7 @@ class TransformerPageController extends PageController {
             viewportFraction: viewportFraction);
 
   int getRenderIndexFromRealIndex(num index) {
-    return _getRenderIndexFromRealIndex(index, loop, itemCount, reverse);
+    return _getRenderIndexFromRealIndex(index, loop, itemCount, reverse)!;
   }
 
   int? getRealItemCount() {
@@ -119,7 +118,7 @@ class TransformerPageController extends PageController {
     return loop ? itemCount + kMaxValue : itemCount;
   }
 
-  static _getRenderIndexFromRealIndex(
+  static int? _getRenderIndexFromRealIndex(
       num? index, bool loop, int? itemCount, bool reverse) {
     if (itemCount == 0) return 0;
     int? renderIndex;
@@ -348,8 +347,8 @@ class _TransformerPageViewState extends State<TransformerPageView> {
   TransformerPageController? _pageController;
 
   Widget _buildItemNormal(BuildContext context, int index) {
-    int renderIndex = _pageController!.getRenderIndexFromRealIndex(index);
-    Widget child = widget.itemBuilder!(context, renderIndex);
+    final int renderIndex = _pageController!.getRenderIndexFromRealIndex(index);
+    final Widget child = widget.itemBuilder!(context, renderIndex);
     return child;
   }
 
@@ -500,7 +499,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
   @override
   void didUpdateWidget(TransformerPageView oldWidget) {
     _transformer = widget.transformer;
-    int index = widget.index;
+    final int index = widget.index;
     bool created = false;
     if (_pageController != widget.pageController) {
       if (widget.pageController != null) {
@@ -521,7 +520,8 @@ class _TransformerPageViewState extends State<TransformerPageView> {
     if (_pageController!.getRenderIndexFromRealIndex(_activeIndex) != index) {
       _fromIndex = _activeIndex = _pageController!.initialPage;
       if (!created) {
-        int initPage = _pageController!.getRealIndexFromRenderIndex(index)!;
+        final int initPage =
+            _pageController!.getRealIndexFromRenderIndex(index)!;
         _pageController!.animateToPage(initPage,
             duration: widget.duration, curve: widget.curve);
       }
@@ -580,7 +580,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
   }
 
   void onChangeNotifier() {
-    int? event = widget.controller.event;
+    final int? event = widget.controller.event;
     int? index;
     switch (event) {
       case IndexController.MOVE:

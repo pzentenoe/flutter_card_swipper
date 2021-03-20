@@ -31,8 +31,13 @@ class SwiperControl extends SwiperPlugin {
       this.size: 30.0,
       this.padding: const EdgeInsets.all(5.0)});
 
-  Widget buildButton(SwiperPluginConfig? config, Color color, IconData iconDaga,
-      int quarterTurns, bool previous) {
+  Widget buildButton(
+      SwiperPluginConfig? config,
+      Color color,
+      IconData iconDaga,
+      int quarterTurns,
+      // ignore: avoid_positional_boolean_parameters
+      bool previous) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -57,10 +62,10 @@ class SwiperControl extends SwiperPlugin {
 
   @override
   Widget build(BuildContext context, SwiperPluginConfig? config) {
-    ThemeData themeData = Theme.of(context);
+    final ThemeData themeData = Theme.of(context);
 
-    Color color = this.color ?? themeData.primaryColor;
-    Color disableColor = this.disableColor ?? themeData.disabledColor;
+    final Color color = this.color ?? themeData.primaryColor;
+    final Color disableColor = this.disableColor ?? themeData.disabledColor;
     Color prevColor;
     Color nextColor;
 

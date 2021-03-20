@@ -28,9 +28,9 @@ class FractionPaginationBuilder extends SwiperPlugin {
 
   @override
   Widget build(BuildContext context, SwiperPluginConfig? config) {
-    ThemeData themeData = Theme.of(context);
-    Color activeColor = this.activeColor ?? themeData.primaryColor;
-    Color color = this.color ?? themeData.scaffoldBackgroundColor;
+    final ThemeData themeData = Theme.of(context);
+    final Color activeColor = this.activeColor ?? themeData.primaryColor;
+    final Color color = this.color ?? themeData.scaffoldBackgroundColor;
 
     if (Axis.vertical == config!.scrollDirection) {
       return Column(
@@ -98,23 +98,24 @@ class RectSwiperPaginationBuilder extends SwiperPlugin {
 
   @override
   Widget build(BuildContext context, SwiperPluginConfig? config) {
-    ThemeData themeData = Theme.of(context);
-    Color activeColor = this.activeColor ?? themeData.primaryColor;
-    Color color = this.color ?? themeData.scaffoldBackgroundColor;
+    final ThemeData themeData = Theme.of(context);
+    final Color activeColor = this.activeColor ?? themeData.primaryColor;
+    final Color color = this.color ?? themeData.scaffoldBackgroundColor;
 
-    List<Widget> list = [];
+    final List<Widget> list = [];
 
     if (config!.itemCount! > 20) {
+      // ignore: avoid_print
       print(
           'The itemCount is too big, we suggest use FractionPaginationBuilder instead of DotSwiperPaginationBuilder in this sitituation');
     }
 
-    int itemCount = config.itemCount!;
-    int? activeIndex = config.activeIndex;
+    final int itemCount = config.itemCount!;
+    final int? activeIndex = config.activeIndex;
 
     for (int i = 0; i < itemCount; ++i) {
-      bool active = i == activeIndex;
-      Size size = active ? this.activeSize : this.size;
+      final bool active = i == activeIndex;
+      final Size size = active ? this.activeSize : this.size;
       list.add(SizedBox(
         width: size.width,
         height: size.height,
@@ -171,6 +172,7 @@ class DotSwiperPaginationBuilder extends SwiperPlugin {
   @override
   Widget build(BuildContext context, SwiperPluginConfig? config) {
     if (config!.itemCount! > 20) {
+      // ignore: avoid_print
       print(
           'The itemCount is too big, we suggest use FractionPaginationBuilder instead of DotSwiperPaginationBuilder in this sitituation');
     }
@@ -178,7 +180,7 @@ class DotSwiperPaginationBuilder extends SwiperPlugin {
     Color? color = this.color;
 
     if (activeColor == null || color == null) {
-      ThemeData themeData = Theme.of(context);
+      final ThemeData themeData = Theme.of(context);
       activeColor = this.activeColor ?? themeData.primaryColor;
       color = this.color ?? themeData.scaffoldBackgroundColor;
     }
@@ -196,13 +198,13 @@ class DotSwiperPaginationBuilder extends SwiperPlugin {
       );
     }
 
-    List<Widget> list = [];
+    final List<Widget> list = [];
 
-    int itemCount = config.itemCount!;
-    int? activeIndex = config.activeIndex;
+    final int itemCount = config.itemCount!;
+    final int? activeIndex = config.activeIndex;
 
     for (int i = 0; i < itemCount; ++i) {
-      bool active = i == activeIndex;
+      final bool active = i == activeIndex;
       list.add(Container(
         key: Key('pagination_$i'),
         margin: EdgeInsets.all(space),
@@ -248,12 +250,12 @@ class SwiperCustomPagination extends SwiperPlugin {
 
 class SwiperPagination extends SwiperPlugin {
   /// dot style pagination
-  static const SwiperPlugin dots = const DotSwiperPaginationBuilder();
+  static const SwiperPlugin dots = DotSwiperPaginationBuilder();
 
   /// fraction style pagination
-  static const SwiperPlugin fraction = const FractionPaginationBuilder();
+  static const SwiperPlugin fraction = FractionPaginationBuilder();
 
-  static const SwiperPlugin rect = const RectSwiperPaginationBuilder();
+  static const SwiperPlugin rect = RectSwiperPaginationBuilder();
 
   /// Alignment.bottomCenter by default when scrollDirection== Axis.horizontal
   /// Alignment.centerRight by default when scrollDirection== Axis.vertical
@@ -274,7 +276,7 @@ class SwiperPagination extends SwiperPlugin {
       this.builder: SwiperPagination.dots});
 
   Widget build(BuildContext context, SwiperPluginConfig? config) {
-    Alignment alignment = this.alignment ??
+    final Alignment alignment = this.alignment ??
         (config!.scrollDirection == Axis.horizontal
             ? Alignment.bottomCenter
             : Alignment.centerRight);

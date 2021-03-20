@@ -41,6 +41,7 @@ class _FormSelectState extends State<FormSelect> {
 
   @override
   void initState() {
+    // ignore: prefer_final_locals
     for (int i = 0, c = widget.values.length; i < c; ++i) {
       if (widget.values[i] == widget.value) {
         _selectedIndex = i;
@@ -53,8 +54,8 @@ class _FormSelectState extends State<FormSelect> {
 
   @override
   Widget build(BuildContext context) {
-    String placeholder = widget.placeholder;
-    List<dynamic> values = widget.values;
+    final String placeholder = widget.placeholder;
+    final List<dynamic> values = widget.values;
 
     return Container(
       child: InkWell(
@@ -84,15 +85,13 @@ class _FormSelectState extends State<FormSelect> {
                         ),
                       ),
                       Center(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             if (_selectedIndex >= 0) {
                               widget
                                   .valueChanged(widget.values[_selectedIndex]);
                             }
-
                             setState(() {});
-
                             Navigator.of(context).pop();
                           },
                           child: Text('ok'),

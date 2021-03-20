@@ -149,13 +149,13 @@ class _ExampleCustomState extends State<ExampleCustom> {
           Text('Index:$_currentIndex '),
           Row(
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   _controller.previous(animation: true);
                 },
                 child: Text('Prev '),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   _controller.next(animation: true);
                 },
@@ -165,9 +165,9 @@ class _ExampleCustomState extends State<ExampleCustom> {
                   child: TextField(
                 controller: numberController,
               )),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
-                  var text = numberController.text ?? 0;
+                  final text = numberController.text ?? 0;
                   setState(() {
                     _currentIndex = int.parse(text);
                   });

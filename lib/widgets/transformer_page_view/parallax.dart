@@ -12,7 +12,7 @@ class ColorPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    int index = info.fromIndex;
+    final int index = info.fromIndex;
     _paint.color = colors[index];
     canvas.drawRect(Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
     if (info.done!) {
@@ -21,13 +21,13 @@ class ColorPainter extends CustomPainter {
     int alpha;
     int color;
     double opacity;
-    double? position = info.position;
+    final double? position = info.position;
     if (info.forward!) {
       if (index < colors.length - 1) {
         color = colors[index + 1].value & 0x00ffffff;
-        opacity = (position! <= 0
+        opacity = position! <= 0
             ? (-position / info.viewportFraction!)
-            : 1 - position / info.viewportFraction!);
+            : 1 - position / info.viewportFraction!;
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -43,9 +43,9 @@ class ColorPainter extends CustomPainter {
     } else {
       if (index > 0) {
         color = colors[index - 1].value & 0x00ffffff;
-        opacity = (position! > 0
+        opacity = position! > 0
             ? position / info.viewportFraction!
-            : (1 + position / info.viewportFraction!));
+            : (1 + position / info.viewportFraction!);
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -108,9 +108,7 @@ class ParallaxContainer extends StatelessWidget {
       {required this.child,
       required this.position,
       this.translationFactor: 100.0,
-      this.opacityFactor: 1.0})
-      : assert(position != null),
-        assert(translationFactor != null);
+      this.opacityFactor: 1.0});
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +128,7 @@ class ParallaxImage extends StatelessWidget {
 
   ParallaxImage.asset(String name,
       {required double position, this.imageFactor: 0.3})
-      : assert(imageFactor != null),
-        image = Image.asset(name,
+      : image = Image.asset(name,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
               0.5 + position * imageFactor,

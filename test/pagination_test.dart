@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Pagination', (WidgetTester tester) async {
-    SwiperController controller = SwiperController();
+    final SwiperController controller = SwiperController();
 
     SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
@@ -12,7 +12,7 @@ void main() {
         itemCount: 10,
         scrollDirection: Axis.horizontal);
 
-    Key key = UniqueKey();
+    final Key key = UniqueKey();
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(body: Builder(builder: (BuildContext context) {
         return DotSwiperPaginationBuilder(
@@ -40,9 +40,9 @@ void main() {
   });
 
   testWidgets('Pagination vertical', (WidgetTester tester) async {
-    SwiperController controller = SwiperController();
+    final SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = SwiperPluginConfig(
+    final SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
@@ -76,15 +76,15 @@ void main() {
   });
 
   testWidgets('Pagination fraction', (WidgetTester tester) async {
-    SwiperController controller = SwiperController();
+    final SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = SwiperPluginConfig(
+    final SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,
         scrollDirection: Axis.horizontal);
 
-    Key key = UniqueKey();
+    final Key key = UniqueKey();
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(body: Builder(builder: (BuildContext context) {
         return FractionPaginationBuilder(
@@ -102,9 +102,9 @@ void main() {
   });
 
   testWidgets('Pagination fraction vertical', (WidgetTester tester) async {
-    SwiperController controller = SwiperController();
+    final SwiperController controller = SwiperController();
 
-    SwiperPluginConfig config = SwiperPluginConfig(
+    final SwiperPluginConfig config = SwiperPluginConfig(
         activeIndex: 0,
         controller: controller,
         itemCount: 10,

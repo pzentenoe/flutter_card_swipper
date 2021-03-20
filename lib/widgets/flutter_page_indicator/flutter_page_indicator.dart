@@ -6,21 +6,21 @@ class WarmPainter extends BasePainter {
       : super(widget, page, index, paint);
 
   void draw(Canvas canvas, double space, double size, double radius) {
-    double progress = page - index;
-    double distance = size + space;
-    double start = index * (size + space);
+    final double progress = page - index;
+    final double distance = size + space;
+    final double start = index * (size + space);
 
     if (progress > 0.5) {
-      double right = start + size + distance;
+      final double right = start + size + distance;
       //progress=>0.5-1.0
       //left:0.0=>distance
 
-      double left = index * distance + distance * (progress - 0.5) * 2;
+      final double left = index * distance + distance * (progress - 0.5) * 2;
       canvas.drawRRect(
           RRect.fromLTRBR(left, 0.0, right, size, Radius.circular(radius)),
           _paint);
     } else {
-      double right = start + size + distance * progress * 2;
+      final double right = start + size + distance * progress * 2;
 
       canvas.drawRRect(
           RRect.fromLTRBR(start, 0.0, right, size, Radius.circular(radius)),
@@ -35,10 +35,10 @@ class DropPainter extends BasePainter {
 
   @override
   void draw(Canvas canvas, double space, double size, double radius) {
-    double progress = page - index;
-    double dropHeight = widget.dropHeight;
-    double rate = (0.5 - progress).abs() * 2;
-    double scale = widget.scale;
+    final double progress = page - index;
+    final double dropHeight = widget.dropHeight;
+    final double rate = (0.5 - progress).abs() * 2;
+    final double scale = widget.scale;
 
     //lerp(begin, end, progress)
 
@@ -56,8 +56,8 @@ class NonePainter extends BasePainter {
 
   @override
   void draw(Canvas canvas, double space, double size, double radius) {
-    double progress = page - index;
-    double secondOffset = index == widget.count! - 1
+    final double progress = page - index;
+    final double secondOffset = index == widget.count! - 1
         ? radius
         : radius + ((index + 1) * (size + space));
 
@@ -97,9 +97,10 @@ class ScalePainter extends BasePainter {
   @override
   void paint(Canvas canvas, Size size) {
     _paint.color = widget.color;
-    double space = widget.space;
-    double size = widget.size;
-    double radius = size / 2;
+    final double space = widget.space;
+    final double size = widget.size;
+    final double radius = size / 2;
+    // ignore: prefer_final_locals
     for (int? i = 0, c = widget.count; i! < c!; ++i) {
       if (_shouldSkip(i)) {
         continue;
@@ -114,11 +115,11 @@ class ScalePainter extends BasePainter {
 
   @override
   void draw(Canvas canvas, double space, double size, double radius) {
-    double secondOffset = index == widget.count! - 1
+    final double secondOffset = index == widget.count! - 1
         ? radius
         : radius + ((index + 1) * (size + space));
 
-    double progress = page - index;
+    final double progress = page - index;
     _paint.color = Color.lerp(widget.activeColor, widget.color, progress)!;
     //last
     canvas.drawCircle(Offset(radius + (index * (size + space)), radius),
@@ -182,9 +183,10 @@ abstract class BasePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     _paint.color = widget.color;
-    double space = widget.space;
-    double size = widget.size;
-    double radius = size / 2;
+    final double space = widget.space;
+    final double size = widget.size;
+    final double radius = size / 2;
+    // ignore: prefer_final_locals
     for (int? i = 0, c = widget.count; i! < c!; ++i) {
       if (_shouldSkip(i)) {
         continue;
@@ -261,7 +263,7 @@ class _PageIndicatorState extends State<PageIndicator> {
   }
 
   void _onController() {
-    double page = widget.controller!.page ?? 0.0;
+    final double page = widget.controller!.page ?? 0.0;
     index = page.floor();
 
     setState(() {});

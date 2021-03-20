@@ -168,7 +168,6 @@ class Swiper extends StatefulWidget {
     bool autoplay: false,
     PageTransformer? transformer,
     int autoplayDelay: kDefaultAutoplayDelayMs,
-    bool reverse: false,
     bool autoplayDisableOnInteraction: true,
     int duration: kDefaultAutoplayTransactionDuration,
     ValueChanged<int>? onIndexChanged,
@@ -231,7 +230,6 @@ class Swiper extends StatefulWidget {
     SwiperDataBuilder? builder,
     bool autoplay: false,
     int autoplayDelay: kDefaultAutoplayDelayMs,
-    bool reverse: false,
     bool autoplayDisableOnInteraction: true,
     int duration: kDefaultAutoplayTransactionDuration,
     ValueChanged<int>? onIndexChanged,
@@ -343,10 +341,7 @@ abstract class _SwiperTimerMixin extends State<Swiper> {
 
   @override
   void dispose() {
-    if (_controller != null) {
-      _controller.removeListener(_onController);
-      //  _controller.dispose();
-    }
+    _controller.removeListener(_onController);
 
     _stopAutoplay();
     super.dispose();
@@ -413,7 +408,7 @@ class _SwiperState extends _SwiperTimerMixin {
   }
 
   bool _isPageViewLayout() {
-    return widget.layout == null || widget.layout == SwiperLayout.DEFAULT;
+    return widget.layout == SwiperLayout.DEFAULT;
   }
 
   @override
@@ -450,7 +445,7 @@ class _SwiperState extends _SwiperTimerMixin {
         }
       });
     }
-    if (widget.index != null && widget.index != _activeIndex) {
+    if (widget.index != _activeIndex) {
       _activeIndex = widget.index;
     }
   }
@@ -630,7 +625,7 @@ class _SwiperState extends _SwiperTimerMixin {
 
   Widget _buildOuterPagination(
       SwiperPagination pagination, Widget swiper, SwiperPluginConfig config) {
-    List<Widget> list = [];
+    final List<Widget> list = [];
     //Only support bottom yet!
     if (widget.containerHeight != null || widget.containerWidth != null) {
       list.add(swiper);
@@ -866,7 +861,7 @@ class _StackViewState extends _CustomLayoutStateBase<_StackSwiper> {
 
   void _updateValues() {
     if (widget.scrollDirection == Axis.horizontal) {
-      double space = (_swiperWidth! - widget.itemWidth!) / 2;
+      final double space = (_swiperWidth! - widget.itemWidth!) / 2;
       offsets = [-space, -space / 3 * 2, -space / 3, 0.0, _swiperWidth];
     } else {
       final double space = (_swiperHeight! - widget.itemHeight!) / 2;
@@ -938,11 +933,11 @@ class ScaleAndFadeTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget item, TransformInfo info) {
-    double? position = info.position;
+    final double? position = info.position;
     Widget child = item;
     if (_scale != null) {
-      double scaleFactor = (1 - position!.abs()) * (1 - _scale!);
-      double scale = _scale! + scaleFactor;
+      final double scaleFactor = (1 - position!.abs()) * (1 - _scale!);
+      final double scale = _scale! + scaleFactor;
 
       child = Transform.scale(
         scale: scale,
@@ -951,8 +946,8 @@ class ScaleAndFadeTransformer extends PageTransformer {
     }
 
     if (_fade != null) {
-      double fadeFactor = (1 - position!.abs()) * (1 - _fade!);
-      double opacity = _fade! + fadeFactor;
+      final double fadeFactor = (1 - position!.abs()) * (1 - _fade!);
+      final double opacity = _fade! + fadeFactor;
       child = Opacity(
         opacity: opacity,
         child: child,
